@@ -1,0 +1,72 @@
+<div class="page-header">
+	<h1 style="color:blue"><%= "Welcome, #{@user.name}" %></h1>
+</div>
+
+<ul class="nav nav-tabs">
+	<li class="active"><a href="/dashboards"> Your Dashboard </a></li>
+	<li><a href="/users"> Account </a></li>
+</ul>
+
+<div class="tab-content">
+	<div id="dashboards" class="tab-pane fade in active">
+		<br>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="panel panel-danger">
+					<div class="panel-heading"  id="new_dashboard_panel">
+    					<h3 class="panel-title"> Build A New Dashboard </h3>
+					</div>
+					<div class="panel-body">
+						<% if  @dashboard.errors.full_messages.any? %>
+							<ul class="bg-warning">
+								<% @dashboard.errors.full_messages.each do |msg| %>
+									<li><%= msg %></li>
+								<% end %>
+							</ul>
+						<% end %>
+						<%= form_tag("/dashboards", style: "text-align: center", method: 'post') do  %>
+				    		<div class="form-group" style="text-align: left">
+								<%= label_tag :name, "Dashboard Name" %>
+								<%= text_field_tag :name, @dashboard.name, autofocus: true, maxlength: 30, class: 'form-control' %>
+							</div>
+						    <div class="form-group" style="text-align: left">
+      							<%= label_tag :description, "Short Description" %>
+      							<%= text_area_tag(:description, @dashboard.description, rows: 3, maxlength: 140, class: 'form-control') do %>
+      							<% end %>
+							</div>
+							<%= submit_tag "Create", class: 'btn btn-danger'%>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8">
+				<div class="panel panel-default">
+					<div class="panel-heading" 
+						<h3> Dashboards Manager </h3>
+					</div>
+					<div class="panel-body">
+						<% if @user.dashboards.empty? %>
+							<p> You have no dashboards yet. <p>
+						<% else %>
+							<div class="row">
+								<% @user.dashboards.each do |d| %>
+									<div class="col-sm-4">
+										<div class="thumbnail" style=<%= "background-color:#{d.color}" %>>
+											<div class="caption">
+												<h4> <%= d.name %> </h4>
+												<p> <em> <%= truncate d.description, length: 40 %> </em> </p>
+												<p> <small> <%= "Reviews: #{d.reviews.count}" %> </small> </p>
+												<!--p> <small> <%= "Created: #{d.created_at}" %> </small> </p-->
+											</div>
+											<%= link_to image_tag("blank", style: "opacity:0;position:absolute;top:0;height:100%;width:100%"), "/dashboards/#{d.id}" %>
+										</div>
+									</div>
+								<% end %>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

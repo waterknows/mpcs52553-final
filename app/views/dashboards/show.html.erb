@@ -1,0 +1,23 @@
+<div class="page-header">
+	<h1 style="color:blue"><%= "#{@dashboard.name}" %></h1>
+	<h4> <%= @dashboard.description %> </h4>
+</div>
+<div class="row">
+	<div class="col-sm-4 col-sm-offset-8">
+		<div class="panel panel-default">
+			<div class="panel-heading" style=<%="background-color:#{@dashboard.color}"%>>
+			</div>
+			<div class="panel-body" style="background-color:#F5F5F5">
+			<p> <strong> Dashboard Summary </strong> </p>
+			<p> <%= "Started by: <small> #{@dashboard.user.name} </small>".html_safe %> </p>
+			<p> <%= "Created at: <small> #{@dashboard.created_at.to_formatted_s(:long)} </small>".html_safe %> </p>
+			<p> <%= "Updated at: <small> #{@dashboard.updated_at.to_formatted_s(:long)} </small>".html_safe %> </p>
+			<p> <%= "Reviews: <small> #{@dashboard.reviews.count} </small>".html_safe %> </p>
+			</div>
+		</div>
+		<div style="text-align:center">
+			<a class="btn btn-danger" href=<%="/reviews/new?dashboard_id=#{@dashboard.id}"%> role="button">Add Review (Working)</a>
+			<a class="btn btn-default" href=<%="/dashboards/#{@dashboard.id}"%> rel="nofollow" data-method="delete" role="button">Delete Dashboard (Working)</a>
+		</div>
+	</div>
+</div>

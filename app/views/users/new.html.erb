@@ -1,0 +1,42 @@
+<div class="page-header">
+	<h1>Sign Up</h1>
+</div>
+<div class="row">
+	<div class="col-sm-3">
+		<%= link_to image_tag("icon", width: "100%"), "#form" %>
+	</div>
+	
+	<div class="col-sm-3" id="form">
+		<%= form_tag("/users", method: 'post') do  %>
+			<div class="form-group">
+				<%= label_tag :name, "Username:" %>
+				<%= text_field_tag :name, "", autofocus: true, class: 'form-control', value: @user.name %>
+			</div>
+
+			<div class="form-group">
+				<%= label_tag :email, "Email Address" %>
+				<%= text_field_tag :email, "", class: 'form-control', value: @user.email %>
+			</div>
+
+			<div class="form-group">
+				<%= label_tag :password, "Pick a Password" %>
+				<%= text_field_tag :password, "", class: 'form-control' %>
+			</div>
+
+			<%= submit_tag "Sign Me Up", class: 'btn btn-danger'%>
+    		or
+			<%= link_to "Cancel", root_url %>
+		<% end %>
+	</div>
+
+	<div class="col-sm-6">
+		<% if  @user.errors.full_messages.any? %>
+			<ul class="bg-warning">
+				<% @user.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		<% end %>
+	</div>
+</div>
+

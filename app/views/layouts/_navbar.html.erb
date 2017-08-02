@@ -1,0 +1,31 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to image_tag("icon" , class: "navbar-brand"), "/" %>
+      <%= link_to "Opinion Miner", "/", class: "navbar-brand" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse-section">
+      <ul class="nav navbar-nav navbar-right">
+        <% if session["user_id"].present? %>
+          <% user = User.find_by(id: session["user_id"]) %>
+          <li><%= link_to "Hello, #{user.name}!", "/dashboards" %></li>
+          <li><%= link_to "My Account", "/users/#{user.id}" %></li>
+          <li><%= link_to "Sign Out", "/sessions/#{user.id}", method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", "/users/new" %></li>
+          <li><%= link_to "Sign In", '/sessions/new' %></li>
+        <% end %>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>

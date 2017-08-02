@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Opinion Minner</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'%>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+
+    <%= javascript_include_tag 'https://code.jquery.com/jquery-3.2.1.min.js' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
+  </head>
+
+  <body>
+    <%= render 'layouts/navbar' %>
+
+    <% if flash[:notice].present? %>
+      <div class="alert alert-info">
+        <p><strong><%= flash[:notice] %></strong></p>
+      </div>
+    <% end %>
+    <% if flash[:alert].present? %>
+      <div class="alert alert-danger">
+        <p><strong><%= flash[:alert] %></strong></p>
+      </div>
+    <% end %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
