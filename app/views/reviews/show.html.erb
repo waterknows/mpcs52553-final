@@ -1,0 +1,22 @@
+<div class="page-header">
+	<h1 style="color:black"><%= "#{@review.name}" %></h1>
+</div>
+
+<div class="row">
+	<div class="col-sm-8">
+	<p> <%= @review.description %> </p>
+	</div>
+	<div class="col-sm-4">
+		<div class="panel panel-default">
+			<div class="panel-heading" style=<%="background-color:yellow}"%>>
+			</div>
+			<div class="panel-body" style="background-color:#F5F5F5">
+			<p> <strong> Review Summary </strong> </p>
+			<p> <%= "Started by: <small> #{@review.user.name} </small>".html_safe %> </p>
+			<p> <%= "Created at: <small> #{@review.created_at.to_formatted_s(:long)} </small>".html_safe %> </p>
+			<p> <%= "Updated at: <small> #{@review.updated_at.to_formatted_s(:long)} </small>".html_safe %> </p>
+			</div>
+		</div>
+
+	</div>
+</div>

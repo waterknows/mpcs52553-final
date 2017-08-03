@@ -1,13 +1,13 @@
 class SessionsController < ApplicationController
 	def new
 		if session["user_id"].present?
-			redirect_to "/dashboards"
+			redirect_to "/reviews"
 		end
 	end
 
 	def destroy
 		reset_session
-		redirect_to root_url, notice: "You have been signed out!"
+		redirect_to root_url, notice: "You have successfully signed out!"
 	end
 
 	def create
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 				session["user_id"] = u.id
 				redirect_to "/", notice: "Welcome back, #{u.name}!"
 			else
-				redirect_to "/sessions/new", notice: "No account exists for this email/password pair."
+				redirect_to "/sessions/new", notice: "Wrong email/password pair."
 			end
 		else
 			redirect_to "/sessions/new", notice: "No such account exists."

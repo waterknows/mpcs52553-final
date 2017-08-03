@@ -1,17 +1,7 @@
-<div class="page-header">
-	<h1 style="color:Blue"><%= "Welcome, #{@user.name}" %></h1>
-</div>
-
-<ul class="nav nav-tabs">
-	<li><a href="/dashboards"> Your Dashboards </a></li>
-	<li class="active"><a href="/users"> Account </a></li>
-</ul>
-
 <div class="tab-content">
 	<div id="account" class="tab-pane fade in active">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<h3 style="text-align:center">Account Summary <a href=<%= "/users/#{@user.id}/edit" %> class="glyphicon glyphicon-pencil" style="color:#F58080"> </a></h3>
+			<div class="col-sm-12">
+				<h3 style="text-align:center">Account Summary <a href=<%= "/users/#{@user.id}/edit" %> class="glyphicon glyphicon-edit" style="color:#F58080"> </a></h3>
 				<ul class="list-group">
 					<a href= <%= "/users/#{@user.id}/edit"  %> class="list-group-item">
 						<h4 class="list-group-item-heading"> Username </h4>
@@ -21,24 +11,21 @@
 						<h4 class="list-group-item-heading"> Email </h4>
 						<p class="list-group-item-text"> <%= @user.email %> </p>
 					</li>
-					<a href="/dashboards" class="list-group-item">
-						<h4 class="list-group-item-heading"> Dashboards </h4>
-						<p class="list-group-item-text"> <%= @user.dashboards.count %> </p>
-					</a>
+
 					<li href="#" class="list-group-item">
-						<h4 class="list-group-item-heading"> User Since </h4>
+						<h4 class="list-group-item-heading"> Password </h4>
+						<p class="list-group-item-text"> <%= @user.password  %> </p>
+					</li>	
+					
+					<li href="#" class="list-group-item">
+						<h4 class="list-group-item-heading"> Create Date </h4>
 						<p class="list-group-item-text"> <%= @user.created_at %> </p>
 					</li>					
-					<li href="#" class="list-group-item">
-						<h4 class="list-group-item-heading"> Last Updated </h4>
-						<p class="list-group-item-text"> <%= @user.updated_at %> </p>
-					</li>
 				</ul>
-				<%= form_tag("/users/#{@user.id}", style: "text-align:center", method: 'delete', data: { confirm: "Are you sure you want to delete your account?" }) do  %>
-					<%= submit_tag "Delete Account", class: 'btn btn-danger'%>
+				<%= form_tag("/users/#{@user.id}", style: "text-align:center", method: 'delete', data: { confirm: "Are you sure?" }) do  %>
+					<%= submit_tag "Delete Account", class: 'btn btn-info'%>
 				<% end %>
 			</div>
 		</div>
-	</div>
 
 </div>

@@ -13,21 +13,22 @@ class UsersController < ApplicationController
 		@user.name = params[:name]
 		@user.password = params['password']
 		if @user.save
-			redirect_to "/sessions/new", notice: "Your account has been created!"
+			redirect_to "/sessions/new", notice: "Account successfully created!"
 		else 
-			flash[:notice] = "Your account could not be created. See below for more information."
+			flash[:notice] = "Account can not be created!"
 			render "new"
 		end
 	end
 
 	def update
 		@user = User.find_by(id: params[:id])
+		@password = params['password']
 		if session[:user_id].present? && @user.id == session["user_id"]
 			@user.name = params[:name]
 			if @user.save
 				render "show"
 			else
-				flash[:notice] = "Could not change your username to '#{params[:name]}'."
+				flash[:notice] = "Can not change your username to '#{params[:name]}'."
 				render "edit"
 			end
 		else
@@ -39,6 +40,7 @@ class UsersController < ApplicationController
 
 	def edit
 		@user = User.find_by(id: params[:id])
+		@password = params['password']
 		if session[:user_id].present? && @user.id == session["user_id"]
 			render "edit"
 		else 
@@ -72,11 +74,9 @@ class UsersController < ApplicationController
 		if @user.present? && @user.id == session["user_id"]
 			reset_session
 			@user.destroy
-			redirect_to root_url, notice: "You have deleted your account!"
-		elsif session[:user_id].present?
-			redirect_to "/users/#{session[:user_id]}", notice: "You cannot delete someone else's account!"
+			redirect_to root_url, notice: "Account successfully deleted!"
 		else
-			redirect_to "/sessions/new", notice: "You must sign in to delete your account!"
+			redirect_to "/sessions/new", notice: "Account can not be deleted!"
 		end		
 	end
 end

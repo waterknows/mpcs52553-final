@@ -1,0 +1,36 @@
+<ul class="nav nav-pills">
+	<li class="active"><a href="/reviews"> Dashboard </a></li>
+	<li><a href="/reviews/new"> New Review </a></li>
+</ul>
+
+<div class="tab-content">
+	<div id="reviews" class="tab-pane fade in show active">
+		<br>
+		<div class="col-sm-12">
+			<div class="panel-info">
+				<div class="panel-heading"  id="new_review_panel">
+					<h3 class="panel-title"> Reviews Manager </h3>
+				</div>
+				<div class="panel-body">
+					<% if @user.reviews.empty? %>
+						<p> No reviews yet. <p>
+					<% else %>
+						<div class="row">
+							<% @user.reviews.each do |d| %>
+								<div class="col-sm-12">
+									<div class="thumbnail" style=<%= "background-color:white" %>>
+										<div class="caption">
+											<h4> <%= d.name %> </h4>
+											<p> <em> <%= truncate d.description, length: 100 %> </em> </p>
+										</div>
+										<%= link_to image_tag("blank", style: "opacity:0;position:absolute;top:0;height:100%;width:100%"), "/reviews/#{d.id}" %>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

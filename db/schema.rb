@@ -12,25 +12,13 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
-  create_table "dashboards", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text "name"
     t.text "description"
-    t.text "color"
     t.boolean "public", default: false
-    t.integer "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["user_id"], name: "index_dashboards_on_user_id"
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.text "key"
-    t.text "value"
-    t.integer "dashboard_id"
-    t.integer "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["dashboard_id"], name: "index_reviews_on_dashboard_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 

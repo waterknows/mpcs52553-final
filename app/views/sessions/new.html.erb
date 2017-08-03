@@ -1,45 +1,45 @@
-<div class="jumbotron">
-	<h1 style="text-align:center">Opinion Miner</h1>
-	<h2 style="color:blue;text-align:center"> Managing customer reviews with machine learning </h2>
-</div>
-<div class="row">
+<h1 style="text-align:center"><%= link_to image_tag("icon", width: "15%"), "#sign_in_panel" %>Opinion Miner</h1>
+<br>
+<h4 style="text-align:justify; color:gray"> This is a web customer reviews manager that utilizes machine learning techinques to automatically classify new and existing reviews. The machine learning algorithm is written in Python and will be connected to Rails via system call. </h4>
 
+<br>
+<br>
+<div class="row">
 	<div class="col-sm-4">
-		<%= link_to image_tag("icon", width: "100%"), "#sign_in_panel" %>
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title"> Sample Accounts </h3>
+			</div>
+			<ul class="list-group"> 
+				<li class="list-group-item"> Email: doctor723@example.com <br>Password: xiaoxiao </li>
+   				<li class="list-group-item"> Email: example@example.com <br>Password: xiaoxiao</li>
+   			</ul>
+		</div>
 	</div>
 
-	<div class="col-sm-4">
-		<div class="panel panel-danger">
+	<div class="col-sm-8">
+		<div class="panel panel-info">
 			<div class="panel-heading"  id="sign_in_panel">
     			<h3 class="panel-title"> Log in </h3>
 			</div>
 			<div class="panel-body">
 				<%= form_tag("/sessions", method: 'post') do  %>
 				    <div class="form-group">
-						<%= label_tag :email, "Email Address" %>
+						<%= label_tag :email, "Email" %>
 						<%= text_field_tag :email, "", autofocus: true, class: 'form-control' %>
 					</div>
 				    <div class="form-group">
       					<%= label_tag :password, "Password" %>
       					<%= password_field_tag :password, "", class: 'form-control' %>
 					</div>
-					<%= submit_tag "Sign In", class: 'btn btn-danger'%>   
-					<%= link_to "New user?", "/users/new" %>
+					<%= submit_tag "Sign In", class: 'btn btn-info'%> 
+					or  
+					<%= link_to "Sign Up", "/users/new" %>
 				<% end %>
 			</div>
 		</div>
 	</div>
 
-	<div class="col-sm-4">
-		<div class="panel panel-default">
-  			<div class="panel-heading">
-    			<h3 class="panel-title"> Accounts </h3>
-			</div>
-			<ul class="list-group"> 
-				<li class="list-group-item"> Email: doctor723@example.com Password: xiaoxiao </li>
-   				<li class="list-group-item"> Email: example@example.com Password: xiaoxiao</li>
-   			</ul>
-		</div>
-	</div>
+
 
 </div>

@@ -1,0 +1,38 @@
+<ul class="nav nav-pills">
+	<li><a href="/reviews"> Dashboard </a></li>
+	<li class="active"><a href="/reviews/new"> New Review </a></li>
+</ul>
+
+<div class="tab-content">
+	<div id="reviews" class="tab-pane fade in show active">
+		<br>
+		<div class="col-sm-12">
+			<div class="panel-info">
+				<div class="panel-heading"  id="new_review_panel">
+					<h3 class="panel-title"> Add a New Review </h3>
+				</div>
+				<div class="panel-body">
+					<% if  @review.errors.full_messages.any? %>
+						<ul class="bg-warning">
+							<% @review.errors.full_messages.each do |msg| %>
+								<li><%= msg %></li>
+							<% end %>
+						</ul>
+					<% end %>
+					<%= form_tag("/reviews", style: "text-align: center", method: 'post') do  %>
+			    		<div class="form-group" style="text-align: left">
+							<%= label_tag :name, "Title" %>
+							<%= text_field_tag :name, @review.name, autofocus: true, maxlength: 30, class: 'form-control' %>
+						</div>
+					    <div class="form-group" style="text-align: left">
+								<%= label_tag :description, "Content" %>
+								<%= text_area_tag(:description, @review.description, rows: 10, maxlength: 500, class: 'form-control') do %>
+								<% end %>
+						</div>
+						<%= submit_tag "Create", class: 'btn btn-info'%>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

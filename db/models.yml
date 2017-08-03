@@ -5,19 +5,10 @@ User
   created_at: datetime
   updated_at: datetime
 
-Dashboard
+Review
   name: text
   description: text
-  color: text
   public: boolean
-  user_id: integer #creator
-  created_at: datetime
-  updated_at: datetime
-
-Review
-  key: text
-  value: text
-  dashboard_id: integer
   user_id: integer #creator
   created_at: datetime
   updated_at: datetime
