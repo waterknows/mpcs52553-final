@@ -1,6 +1,6 @@
 <div class="tab-content">
 	<div id="account" class="tab-pane fade in active">
-		<div class="col-sm-12">
+		<div class="col-sm-12; jumbotron">
 			<h3 style="text-align:center">Modify Account </h3>
 			<%= form_tag("/users/#{@user.id}", method: 'patch', data: { confirm: "Really? " }) do  %>
 				<% if  @user.errors.full_messages.any? %>
@@ -19,14 +19,10 @@
 						<h4 class="list-group-item-heading"> Email </h4>
 						<%= text_field_tag :email, @user.email, class: 'form-control' %>
 					</a>
-					<li href="#" class="list-group-item">
-						<h4 class="list-group-item-heading"> Password </h4>
-						<p class="list-group-item-text"> <%= @user.password  %> </p>
-					</li>	
 
 					<li href="#" class="list-group-item">
 						<h4 class="list-group-item-heading"> Create Date </h4>
-						<p class="list-group-item-text"> <%= @user.created_at %> </p>
+						<%= @user.created_at %>
 					</li>	
 
 				</ul>

@@ -1,17 +1,18 @@
-<ul class="nav nav-pills">
-	<li class="active"><a href="/reviews"> Dashboard </a></li>
-	<li><a href="/reviews/new"> New Review </a></li>
-</ul>
 
 <div class="tab-content">
 	<div id="reviews" class="tab-pane fade in show active">
-		<br>
 		<div class="col-sm-12">
+			<ul class="nav nav-pills">
+				<li class="active"><a href="/reviews"> Dashboard </a></li>
+				<li><a href="/reviews/new"> New Review </a></li>
+			</ul>
+			<br>
+
 			<div class="panel-info">
 				<div class="panel-heading"  id="new_review_panel">
 					<h3 class="panel-title"> Reviews Manager </h3>
 				</div>
-				<div class="panel-body">
+				<div class="panel-body jumbotron">
 					<% if @user.reviews.empty? %>
 						<p> No reviews yet. <p>
 					<% else %>
