@@ -6,16 +6,27 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'csv'
 
 # Reset the 'users' table
 User.delete_all
-doctor723 = User.create name: 'doctor723', email: 'doctor723@example.com', password: 'xiaoxiao'
-example = User.create name: 'example', email: 'examplet@example.com', password: 'xiaoxiao'
+example = User.create name: 'admin', email: 'admin@example.com', password: 'admin'
 
-# Reset the 'reviews' table
+# Load 'reviews' table from csv. 
+# Attribution: https://gist.github.com/arjunvenkat/1115bc41bf395a162084
+
 Review.delete_all
-a = Review.create user_id: doctor723.id, name: 'Positive review', description: 'This is the worst movie I have ever seen!'
-b = Review.create user_id: doctor723.id, name: 'Negative review', description: 'This is the best movie I have ever seen!'
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'abstracts_mini.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'UTF-8')
+csv.each do |row|
+  t = Review.new
+  t.description = row['description']
+  t.name = row['name']
+  t.user_id = example.id
+
+  t.save
+end
 
 puts "#{User.count} users."
 puts "#{Review.count} reviews."
