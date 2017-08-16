@@ -34,6 +34,9 @@
 				<%= form_tag("/reviews/#{@review.id}",style: "text-align:center", method: 'delete', data: { confirm: "Are you sure?" }) do  %>
 					<%= submit_tag "Delete", class: 'btn-primary btn-block'%>
 				<% end %>
+				<%= form_tag("/reviews/#{@review.id}/tag",style: "text-align:center", method: 'get') do  %>
+					<%= submit_tag "Tag", class: 'btn-primary btn-block'%>
+				<% end %>
 
 			</div>
 		</div>

@@ -17,13 +17,15 @@
       <ul class="nav navbar-nav navbar-right">
         <% if session["user_id"].present? %>
           <% user = User.find_by(id: session["user_id"]) %>
-          <li><%= link_to "#{user.name}'s Reviews", "/reviews" %></li>
+          <li><%= link_to "#{user.name}'s Dashboard", "/reviews" %></li>
           <li><%= link_to "My Account", "/users/#{user.id}" %></li>
           <li><%= link_to "Sign Out", "/sessions/#{user.id}", method: :delete %></li>
+          <li><%= link_to 'LDA Model', "/lda" %></li>
           <li><%= link_to 'User Stories', "/help" %></li>
         <% else %>
           <li><%= link_to "Sign Up", "/users/new" %></li>
           <li><%= link_to "Sign In", '/sessions/new' %></li>
+          <li><%= link_to 'LDA Model', "/lda" %></li>
           <li><%= link_to 'User Stories', "/help" %></li>
         <% end %>
 

@@ -23,6 +23,18 @@ class ReviewsController < ApplicationController
 		#users can only manage their own reviews
 		if @review.present? && @review.user_id == session["user_id"]
 			render "show"
+
+		else
+			redirect_to "/reviews", notice: "Authorization failure!"
+		end
+	end
+	
+	#A method to call python script to tag reviews
+	def tag
+		@review = Review.find_by(id: params["id"])
+		if @review.present? && @review.user_id == session["user_id"]
+			@tag = `python python/similar_doc.py lda apply \"#{@review.description}\"`
+			render "tag"
 		else
 			redirect_to "/reviews", notice: "Authorization failure!"
 		end
