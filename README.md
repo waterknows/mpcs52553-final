@@ -11,13 +11,13 @@ The python model is triggered by the "Tag" button under reviews/:id and will aff
 * As a visitor, I want to sign up for a free account so that I can upload and manage reviews.
 * As a visitor, I want to read user stories and business rules.
 * As a user, I want to view all reviews.
-* As a user, I want to search reviews by key words.
+* As a user, I want to search reviews by key words (search bar).
 * As a user, I want to see a specific review.
 * As a user, I want to add new reviews.
 * As a user, I want to delete a review that I entered.
 * As a user, I want to edit a review that I entered.
-* As a user, I want to use a pre-trained LDA model to automatically tag reviews.
-* As a user, I want to view the pre-trained lda model (navbar-LDA Model).
+* As a user, I want to use a pre-trained LDA model to tag reviews (Tag button).
+* As a user, I want to view the pre-trained lda model (see navbar-LDA Model).
 * As a user, I want to see my account details.
 * As a user, I want to modify my account details.
 * As a user, I want to logout my account.
