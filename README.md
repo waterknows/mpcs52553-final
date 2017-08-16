@@ -1,9 +1,10 @@
 # MPCS52553 Final Project
 
-## 1.Setup
-Please run following commands to install necessary python3 packages:
-pip install numpy pandas nltk scikit-learn lda
-python -m nltk.downloader popular
+## 1. Introduction
+This project uses Ruby on Rails as a resource provider of utilize pre-trained machine learning model to process user input. Please run following commands to install necessary python3 packages:
+* pip install numpy pandas nltk scikit-learn lda
+* python -m nltk.downloader popular
+The python model is triggered by the "Tag" button under reviews/:id and will affect the presentation of other resources.
 
 ## 2. User Stories
 * As a visitor, I want to sign up for a free account so that I can upload and manage reviews.
@@ -15,7 +16,7 @@ python -m nltk.downloader popular
 * As a user, I want to delete a review that I entered.
 * As a user, I want to edit a review that I entered.
 * As a user, I want to use a pre-trained LDA model to automatically tag reviews.
-* As a user, I want to see the details of the pre-trained lda model.
+* As a user, I want to view the pre-trained lda model (navbar-LDA Model).
 * As a user, I want to see my account details.
 * As a user, I want to modify my account details.
 * As a user, I want to logout my account.
