@@ -4,6 +4,7 @@
 This project uses Ruby on Rails as a resource provider of utilize pre-trained machine learning model to process user input. Please run following commands to install necessary python3 packages:
 * pip install numpy pandas nltk scikit-learn lda
 * python -m nltk.downloader popular
+
 The python model is triggered by the "Tag" button under reviews/:id and will affect the presentation of other resources.
 
 ## 2. User Stories
