@@ -1,7 +1,7 @@
 # MPCS52553 Final Project
 
 ## 1. Introduction
-This project uses Ruby on Rails as a resource provider of utilize pre-trained machine learning model to process user input. Please run following commands to install necessary python3 packages:
+This project uses Ruby on Rails as a resource provider to classify/tag user input with a pre-trained machine learning model (LDA). Please run the following commands to install necessary python3 packages first:
 * pip install numpy pandas nltk scikit-learn lda
 * python -m nltk.downloader popular
 
@@ -10,6 +10,7 @@ The python model is triggered by the "Tag" button under reviews/:id and will aff
 ## 2. User Stories
 * As a visitor, I want to sign up for a free account so that I can upload and manage reviews.
 * As a visitor, I want to read user stories and business rules.
+* As a visitor, I want to view the pre-trained lda model (see navbar-LDA Model).
 * As a user, I want to view all reviews.
 * As a user, I want to search reviews by key words (search bar).
 * As a user, I want to see a specific review.
@@ -17,7 +18,6 @@ The python model is triggered by the "Tag" button under reviews/:id and will aff
 * As a user, I want to delete a review that I entered.
 * As a user, I want to edit a review that I entered.
 * As a user, I want to use a pre-trained LDA model to tag reviews (Tag button).
-* As a user, I want to view the pre-trained lda model (see navbar-LDA Model).
 * As a user, I want to see my account details.
 * As a user, I want to modify my account details.
 * As a user, I want to logout my account.

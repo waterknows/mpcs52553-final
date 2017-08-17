@@ -1,6 +1,9 @@
 <h1 style="text-align:center"><%= link_to image_tag("icon", width: "15%"), "#sign_in_panel" %>Text Tagger</h1>
 <br>
-<h4 style="text-align:justify; color:gray"> This is a web-based text data tagger that utilizes unsupervised machine learning models to automatically tag new and existing text. The machine learning algorithm is written in Python and will be connected to Rails via system call. </h4>
+<h4 style="text-align:justify; color:gray"> This project uses Ruby on Rails as a resource provider to classify/tag user input with a pre-trained machine learning model (LDA). The python model is triggered by the "Tag" button under reviews/:id and will not affect the presentation of other resources. Please run the following commands to install necessary python 3 packages first:</h4>
+<h4><li>pip install numpy pandas nltk scikit-learn lda</li>
+<li>python -m nltk.downloader popular</li></h4>
+
 
 <br>
 <br>
