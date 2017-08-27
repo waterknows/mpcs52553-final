@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
+
 	def new
 		if session["user_id"].present?
 			redirect_to "/users/#{session["user_id"]}"
 		else
+			#redirect_to "/sessions/new", notice: "Account creation has been suspended."
 			@user = User.new
 		end
 	end
@@ -32,7 +34,6 @@ class UsersController < ApplicationController
 				render "edit"
 			end
 		else
-			reset_session
 			redirect_to "/sessions/new"			
 		end
 		print params["name"]
@@ -44,7 +45,6 @@ class UsersController < ApplicationController
 		if session["user_id"].present? && @user.id == session["user_id"]
 			render "edit"
 		else 
-			reset_session
 			redirect_to "/sessions/new"
 		end
 	end

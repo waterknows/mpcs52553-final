@@ -12,14 +12,24 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
-  create_table "reviews", force: :cascade do |t|
+  create_table "documents", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text "name"
     t.text "description"
     t.boolean "public", default: false
-    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["user_id"], name: "index_documents_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.integer "document_id"
+    t.text "topic"
+    t.text "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean "tagged_by_model", default: false
+    t.index ["document_id"], name: "index_tags_on_document_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -28,6 +38,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.text "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text "privilege"
   end
 
 end

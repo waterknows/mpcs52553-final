@@ -1,0 +1,50 @@
+<div class="tab-content">
+	<div id="documents" class="tab-pane fade in show active">
+		<div class="col-sm-12">
+			<ul class="nav nav-pills">
+				<li><a href="/documents"> Dashboard </a></li>
+				<li><a href="/documents/new"> New Data </a></li>
+			</ul>
+			<br>
+
+			<div class="panel-info">
+				<div class="panel-heading"  id="new_document_panel">
+					<h3 class="panel-title"> Tag Data Using LDA </h3>
+				</div>
+				<div class="panel-body">
+					<% if  @document.errors.full_messages.any? %>
+						<ul class="bg-warning">
+							<% @document.errors.full_messages.each do |msg| %>
+								<li><%= msg %></li>
+							<% end %>
+						</ul>
+					<% end %>
+
+					<p><font color = <%= @tag_color %> > Topic Area: <%= @tag_topic %></font> </p>
+					<li><font color = "#1f77b4">Area 0: [Machine Learning] method feature data learning classification network proposed algorithm clustering set</font></li>
+					<li><font color = "#aec7e8">Area 1: [Computer Graphics] image object surface method 3d model point motion using shape</font></li>
+					<li><font color = "#ff7f0e">Area 2: [Computer Architecture, Processor] processor performance parallel application architecture memory machine hardware data implementation</font></li>
+					<li><font color = "#ffbb78">Area 3: [Computer Programmng] program system software language code design tool programming process analysis</font></li>
+					<li><font color = "#2ca02c">Area 4: [Computer Network, Scheduling] system resource server time service scheduling performance task control policy</font></li>
+					<li><font color = "#98df8a">Area 5: [Formal Language] model rule language property set system class logic semantics relation</font></li>
+					<li><font color = "#d62728">Area 6: [Network Security] security protocol attack key message detection scheme failure system information</font></li>
+					<li><font color = "#ff9896">Area 7: [Algorithm] algorithm problem solution time optimization number optimal tree method set</font></li>
+					<li><font color = "#9467bd">Area 8: [Database, Information Retrieval] data query database information web document search approach result retrieval</font></li>
+					<li><font color = "#c5b0d5">Area 9: [Computer Network, Routing] network node traffic protocol routing wireless packet scheme sensor performance</font></li>
+					<li><font color = "#8c564b">Area 10: [Distributed System, Mobile] system application service environment distributed architecture mobile device user management</font></li>
+					<li><font color = "#c49c94">Area 11: [Computer Architecture, Memory] memory cache performance data access file transaction system storage disk</font></li>
+					<li><font color = "#e377c2">Area 12: [Computer Mathematics] method equation numerical function scheme flow matrix system solution using</font></li>
+					<li><font color = "#f7b6d2">Area 13: [Computer Education] student learning computer study group project course research development use</font></li>
+					<li><font color = "#7f7f7f">Area 14: [UX Design] user system information design research use problem work many approach</font></li>
+					<li><font color = "#c7c7c7">Area 15: [Research] task word speech study visual processing result experiment effect activity</font></li>
+					<li><font color = "#bcbd22">Area 16: [Game Theory, Decision Theory] agent model game process product decision system business organization planning</font></li>
+					<li><font color = "#dbdb8d">Area 17: [Data Analysis] model analysis result data distribution parameter time method simulation study</font></li>
+					<li><font color = "#17becf">Area 18: [Computer Organization, Design] power design circuit test energy fault technique proposed area consumption</font></li>
+					<li><font color = "#9edae5">Area 19: [Graph Theory] n graph number time 1 bound problem k p set</font></li>
+					<br>
+					<%= link_to "Back", "/documents/#{@document.id}" %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

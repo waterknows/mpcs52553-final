@@ -1,15 +1,24 @@
 User
   name: text
   email: text
+  privilege: text
   password_digest: text
   created_at: datetime
   updated_at: datetime
 
-Review
+Document
   name: text
   description: text
   public: boolean
   user_id: integer #creator
+  created_at: datetime
+  updated_at: datetime
+
+Tag
+  topic: text
+  color: text
+  document_id: integer #creator
+  tagged_by_model: boolean
   created_at: datetime
   updated_at: datetime
 

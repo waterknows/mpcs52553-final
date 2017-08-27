@@ -22,3 +22,7 @@ li a {
 	min-height: 10em;
 	overflow: scroll;	
 }
+
+.list-group-item {
+    padding: 3px 10px
+}

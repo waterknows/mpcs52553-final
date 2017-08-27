@@ -1,25 +1,22 @@
 <h1 style="text-align:center"><%= link_to image_tag("icon", width: "15%"), "#sign_in_panel" %>Text Tagger</h1>
 <br>
-<h4 style="text-align:justify; color:gray"> This project uses Ruby on Rails as a resource provider to classify/tag user input with a pre-trained machine learning model (LDA). The python model is triggered by the "Tag" button under reviews/:id and will not affect the presentation of other resources. Please run the following commands to install necessary python 3 packages first:</h4>
-<h4><li>pip install numpy pandas nltk scikit-learn lda</li>
-<li>python -m nltk.downloader popular</li></h4>
-
-
-<br>
-<br>
+	
 <div class="row">
-	<div class="col-sm-4">
+	<div class="col-sm-6">
 		<div class="panel panel-default">
   			<div class="panel-heading">
-    			<h3 class="panel-title"> Sample Account(s) </h3>
+    			<h3 class="panel-title"> About </h3>
 			</div>
-			<ul class="list-group"> 
-   				<li class="list-group-item"> Email: admin@example.com <br>Password: admin</li>
+			<p
+			<ul class="list-group">
+			<li class="list-group-item"></li>	
+			 <li class="list-group-item" style="font-size:15px">Text Tagger is a cloud-based machine learning web application to gain insights from large amount of text data. It provides an integrated platform for developers, clients and client service staff to utilize, visualize and cultivate machine learning models. </li>
+   				<li class="list-group-item"></li>
    			</ul>
 		</div>
 	</div>
 
-	<div class="col-sm-8">
+	<div class="col-sm-6">
 		<div class="panel panel-info">
 			<div class="panel-heading"  id="sign_in_panel">
     			<h3 class="panel-title"> Login </h3>
@@ -41,7 +38,11 @@
 			</div>
 		</div>
 	</div>
-
-
-
 </div>
+	<div class="row">
+	<div class="row">
+	<br>
+	<p>If you visit this app remotely, please follow the instructions; If you run this app locally, please install necessary python 3 packages first: <mark>pip install numpy pandas nltk scikit-learn lda</mark>
+	<mark>python -m nltk.downloader popular</mark></p>
+	</div>
+	</div>	

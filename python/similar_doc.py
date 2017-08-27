@@ -8,7 +8,6 @@ import nltk
 import sklearn
 import lda
 
-
 # prepare input for LDA model
 def text2vec(docs,mode,vocabulary=None):
     count_vectorizer = sklearn.feature_extraction.text.CountVectorizer(max_df=0.5, min_df=2, tokenizer=lambda text: tokenize_lemmatize(text,lemmatize=True,stem=False), 
@@ -16,10 +15,10 @@ def text2vec(docs,mode,vocabulary=None):
     if vocabulary is not None:
         count_vectorizer = sklearn.feature_extraction.text.CountVectorizer(max_df=0.5, min_df=2, tokenizer=lambda text: tokenize_lemmatize(text,lemmatize=True,stem=False), 
             lowercase=True, vocabulary = vocabulary)
-    if type(docs)==str:
-        vectors = count_vectorizer.fit_transform([docs])
-    else:
+    try:
         vectors = count_vectorizer.fit_transform(docs)
+    except:
+        vectors = count_vectorizer.fit_transform([docs])
     vocab = count_vectorizer.get_feature_names()
     if mode == "save":
         with open('python/lda_vocab.pkl', 'wb') as f:
@@ -55,19 +54,19 @@ def tokenize_lemmatize(text, stop=None, lemmatize=False,stem=False):
 def print_lda(lda_model, vocab):
     n_top_words = 10
     topic_summaries = []
-
     topic_word = lda_model.topic_word_  # get the topic words
     for i, topic_dist in enumerate(topic_word):
         topic_words = np.array(vocab)[np.argsort(topic_dist)][:-(n_top_words+1):-1]
         topic_summaries.append(' '.join(topic_words))
         print('Area {}: {}'.format(i, ' '.join(topic_words)))
 
-###################################################
-
-def tag_lda(doc,vocab,model,mode):
-    test = text2vec(doc,mode,vocab)[0]
-    topic_num = model.transform(test).argmax()
-    return topic_num
+def tag_lda(docs,vocab,model,mode):
+    lda_keys = []
+    test = text2vec(docs,mode,vocab)[0]
+    for row in test:
+        topic_num = model.transform(row).argmax()
+        lda_keys.append(topic_num)
+    return lda_keys
 
 def main(type, mode, input_file=None, test_data=None):
     if input_file is not None:
@@ -86,8 +85,8 @@ def main(type, mode, input_file=None, test_data=None):
                 lda_model=pickle.load(f)
             with open('python/lda_vocab.pkl', 'rb') as f:
                 vocab=pickle.load(f)
-            output = tag_lda(test_data,vocab,lda_model,mode) 
-
+            docs = test_data.split("===")
+            output = tag_lda(docs,vocab,lda_model,mode) 
     return print(output)
 
 

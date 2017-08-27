@@ -1,0 +1,45 @@
+<div class="tab-content">
+	<div id="documents" class="tab-pane fade in show active">
+		<div class="col-sm-12">
+			<ul class="nav nav-pills">
+				<li><a href="/documents"> Dashboard </a></li>
+				<li><a href="/documents/new"> New Data </a></li>
+			</ul>
+
+<div class="page-header">
+	<h4 style="color:black"><%= "#{@document.name}" %></h4>
+	<br>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<p style="font-size:14px;font-style:italic"> <%= "Tags: #{@document.tags.pluck("topic")}".html_safe %></p>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-10">
+		<p> <%= @document.description %> </p>
+	</div>
+	<div class="col-sm-2">
+		<div class="panel panel-default">
+			<div class="panel-heading" align="center">
+				<strong>MENU</strong>
+			</div>
+			<div class="panel-body" style="background-color:#F5F5F5">
+				
+				<%= form_tag("/documents/#{@document.id}/edit",style: "text-align:center", method: 'get') do  %>
+					<%= submit_tag "Edit", class: 'btn-primary btn-block'%>
+				<% end %>
+				<%= form_tag("/documents/#{@document.id}",style: "text-align:center", method: 'delete', data: { confirm: "Are you sure?" }) do  %>
+					<%= submit_tag "Delete", class: 'btn-primary btn-block'%>
+				<% end %>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+</div>
+</div>
+</div>

@@ -10,23 +10,28 @@ require 'csv'
 
 # Reset the 'users' table
 User.delete_all
-example = User.create name: 'admin', email: 'admin@example.com', password: 'admin'
+microsoft = User.create name: 'microsoft', email: 'admin@microsoft.com', privilege: 'admin', password: 'admin'
+worldbank = User.create name: 'worldbank', email: 'admin@worldbank.org', privilege: 'admin', password: 'admin'
 
-# Load 'reviews' table from csv. 
+# Load 'documents' table from csv. 
 # Attribution: https://gist.github.com/arjunvenkat/1115bc41bf395a162084
 
-Review.delete_all
+Document.delete_all
 
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'abstracts_mini.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'UTF-8')
 csv.each do |row|
-  t = Review.new
+  t = Document.new
   t.description = row['description']
   t.name = row['name']
-  t.user_id = example.id
+  t.user_id = microsoft.id
 
   t.save
 end
 
+Tag.delete_all
+
+
 puts "#{User.count} users."
-puts "#{Review.count} reviews."
+puts "#{Document.count} documents."
+puts "#{Tag.count} tags."

@@ -1,0 +1,77 @@
+
+<div class="tab-content">
+<div id="documents" class="tab-pane fade in show active">
+<div class="col-sm-12">
+	<ul class="nav nav-pills">
+		<li class="active"><a href="/documents"> Dashboard </a></li>
+		<li><a href="/documents/new"> New Data </a></li>
+	</ul>
+	<br>
+
+	<div class="panel-info">
+		<div class="panel-heading"  id="new_document_panel" align='left'>
+			<p>Text Tagger is a cloud-based machine learning web application to provide insights from large amount of text data. As a demonstration, one hundred journal abstracts have been provided and you can use the pre-trained model (see "My Model") to "guess" their categories. Model tags will be presented in color and user-defined tags in black.
+
+			<div class="list-group" >
+				<a href="#" class="list-group-item active">User Accounts</a>
+				<a href="#" class="list-group-item">a) Sign up/in/out</a>
+				<a href="#" class="list-group-item">b) View all data</a>
+				<a href="#" class="list-group-item">c) Manage (post/edit/delete) their own data</a>
+				<a href="#" class="list-group-item">d) Tag their own data: add/edit/delete tags for their documents</a>
+			</div>
+
+			<div class="list-group" >
+				<a href="#" class="list-group-item active">Admin Accounts</a>
+				<a href="#" class="list-group-item">a) All previleges of user account</a>
+				<a href="#" class="list-group-item">b) Manage all data</a>
+				<a href="#" class="list-group-item">c) Tag all data: run "tag all" or "tag empty" from command field, or open a document and edit tags</a>
+				<a href="#" class="list-group-item">d) Clean all tags: run "clean all" or "clean model" or "clean user" from command field</a>
+			</div>
+
+			<div class="list-group" >
+				<a href="#" class="list-group-item active">Developer Accounts</a>
+				<a href="#" class="list-group-item">a) All previleges of admin account</a>
+				<a href="#" class="list-group-item">b) Update backend models</a>
+				<a href="#" class="list-group-item">c) Retreive all user input from backend database</a>
+			</div>
+
+	        <form class="navbar-search">
+	          <%= form_tag(documents_path, :method => "get", id: "search-form") do %>
+	          <%= text_field_tag :search, params[:search], placeholder: "Command field..." %>
+	          <button data-disable-with="Running..." name="button" type="submit">Run</button>
+	          <% end %>
+	        </form>
+
+		</div>
+		<div class="panel-body jumbotron">
+			<% if @documents.blank? %>
+				<p> No documents yet. <p>
+			<% else %>
+				<div class="row">
+					<% @documents.each do |d| %>
+						<div class="col-sm-12">
+							<div class="thumbnail" style=<%= "background-color:white" %>>
+								<div class="caption">
+									<h4 style="font-size:16px"> <%= d.name %> </h4>
+									<% if d.tags.all.blank? %>
+										<em> <font color= "black" >???</font></em> 
+									<% else %>
+										<% d.tags.all.each do |t| %>
+											<span><em><font color= <%= t.color%> ><%= t.topic %></font>; </em></span>
+										<% end %>
+									<% end %>
+
+									<p style="font-size:16px"> <%= truncate d.description, length: 300 %></p>
+
+								</div>
+								<%= link_to image_tag("blank", style: "opacity:0;position:absolute;top:0;height:100%;width:100%"), "/documents/#{d.id}" %>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+</div>
+</div>
