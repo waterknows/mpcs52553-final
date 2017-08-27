@@ -28,8 +28,10 @@ group :development, :test do
   gem 'selenium-webdriver'
 end
 
+gem 'pg'
+
 group :production do
-  gem 'pg', '~> 0.21.0'
+
 end
 
 group :development do
