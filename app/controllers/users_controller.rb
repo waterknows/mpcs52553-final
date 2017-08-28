@@ -2,11 +2,11 @@ class UsersController < ApplicationController
 
 	def new
 		if session["user_id"].present?
-			redirect_to "/users/#{session["user_id"]}"
-		else
-			#redirect_to "/sessions/new", notice: "Account creation has been suspended."
-			@user = User.new
+			reset_session
 		end
+			#redirect_to "/sessions/new", notice: "Account creation has been suspended."
+		@user = User.new
+
 	end
 
 	def create
@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 		@user.email = params["email"]
 		@user.name = params["name"]
 		@user.password = params["password"]
+		@user.privilege = "client"
 		if @user.save
 			redirect_to "/sessions/new", notice: "Account successfully created!"
 		else 

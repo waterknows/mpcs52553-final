@@ -31,7 +31,7 @@ end
 gem 'pg'
 
 group :production do
-
+  gem 'pg'
 end
 
 group :development do

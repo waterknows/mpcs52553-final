@@ -8,6 +8,8 @@ import nltk
 import sklearn
 import lda
 
+nltkstop = {'of', 'wasn', 'out', 'on', 'they', 'isn', 'mustn', 'and', 'or', 'yours', 'had', 'hadn', 'until', 'ma', 'what', 'i', 'ain', 'his', 'as', 'those', 'into', 'in', 're', 'weren', 'because', 'other', 'between', 'own', 'where', 'there', 'for', 'not', 'against', 'd', 'once', 's', 'these', 'aren', 'herself', 'have', 'does', 'being', 'do', 'can', 'we', 'me', 'only', 'them', 'off', 'is', 'y', 'no', 'wouldn', 'did', 'further', 'itself', 'be', 'mightn', 'yourselves', 'with', 'hasn', 'here', 'shouldn', 'up', 'theirs', 'below', 'to', 'how', 'was', 'by', 'having', 't', 'down', 'after', 'don', 'their', 'should', 'more', 'our', 've', 'why', 'same', 'doesn', 'before', 'didn', 'when', 'he', 'both', 'ours', 'at', 'few', 'needn', 'any', 'm', 'which', 'from', 'under', 'o', 'again', 'will', 'himself', 'nor', 'who', 'through', 'above', 'ourselves', 'him', 'a', 'so', 'very', 'won', 'your', 'my', 'you', 'an', 'its', 'some', 'such', 'just', 'am', 'the', 'that', 'this', 'doing', 'whom', 'about', 'then', 'are', 'but', 'myself', 'if', 'has', 'haven', 'themselves', 'been', 'couldn', 'over', 'she', 'yourself', 'now', 'shan', 'll', 'most', 'during', 'all', 'while', 'were', 'each', 'it', 'her', 'than', 'too', 'hers'}
+
 # prepare input for LDA model
 def text2vec(docs,mode,vocabulary=None):
     count_vectorizer = sklearn.feature_extraction.text.CountVectorizer(max_df=0.5, min_df=2, tokenizer=lambda text: tokenize_lemmatize(text,lemmatize=True,stem=False), 
@@ -41,7 +43,7 @@ def tokenize_lemmatize(text, stop=None, lemmatize=False,stem=False):
     text = "".join([ch for ch in text if ch not in exclude]) #removing punctuations
     tokens = [token for token in nltk.word_tokenize(text)] #tokenization
     if stop is None:
-        stop=nltk.corpus.stopwords.words('english')
+        stop=nltkstop
         tokens = [token for token in tokens if token not in stop] #removing stopwords
     if lemmatize==True:
         wnl = nltk.stem.WordNetLemmatizer()
