@@ -20,7 +20,7 @@ Document.delete_all
 
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'abstracts_mini.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'UTF-8')
-csv.each do |row|
+csv.first(10).each do |row|
   t = Document.new
   t.description = row['description']
   t.name = row['name']
